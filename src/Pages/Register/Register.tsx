@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
+interface RegisterRequestDto {
+    userName: string;
+    email: string;
+    password: string;
+    claims: { type: string; value: string }[];
+}
+
 const Register: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
@@ -21,7 +28,7 @@ const Register: React.FC = () => {
     headers: {
         "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, userName, password, claims: [{"role": "User"}] }),
+    body: JSON.stringify({ email, userName, password, claims: [{type: "role", value: "User"}] } as RegisterRequestDto),
     }).then(async (response) => {
         if (!response.ok) throw new Error("Register failed."); 
         navigate("/login");

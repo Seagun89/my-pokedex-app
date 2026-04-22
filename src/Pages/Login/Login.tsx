@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-type LoginResponse ={
+type LoginResponse = {
     token: string;
-}
+};
 
 const Login: React.FC = () => {
   const [userName, setUser] = useState<string>("");
@@ -12,6 +12,7 @@ const Login: React.FC = () => {
   const [errorBanner, setError] = useState<boolean>(false);
   
   let errorMessage = "Invalid Username or Password";
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ const Login: React.FC = () => {
         const data: LoginResponse = await response.json();
         sessionStorage.setItem("JWT", data.token);
         console.log('Login successful.');
-
+        navigate("/Dashboard");
     }).catch(() => {
         setError(true);
         console.log(`Login Failed: ${errorMessage}`);
