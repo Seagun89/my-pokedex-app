@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
-interface LoginResponse {
+type LoginResponse ={
     token: string;
 }
 
@@ -66,7 +67,7 @@ const Login: React.FC = () => {
             />
           </div>
           {errorBanner && <p className="login-error">{errorMessage}</p>}
-          <button className="login-button" type="submit" >
+          <button className="login-button" type="submit">
             Login
           </button>
           
@@ -74,7 +75,7 @@ const Login: React.FC = () => {
 
         <div className="login-footer">
           <span>No account? </span>
-          <a href="#">Sign up</a>
+          <Link to="/register">Sign up</Link>
         </div>
       </div>
     </div>

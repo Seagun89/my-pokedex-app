@@ -1,0 +1,95 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page background */
+.Register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff4d4d, #3b4cca); /* Pokemon red/blue */
+}
+
+/* Card */
+.Register-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+.Register-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Input group */
+.Register-input-group {
+  margin-bottom: 1rem;
+}
+
+/* Inputs */
+.Register-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.Register-input:focus {
+  border-color: #3b4cca;
+}
+
+/* Button */
+.Register-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #3b4cca;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-weight: bold;
+}
+
+.Register-button:hover {
+  background: #2a3799;
+}
+
+/* Footer text */
+.Register-footer {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.Register-footer a {
+  color: #3b4cca;
+  text-decoration: none;
+}
+
+.Register-footer a:hover {
+  text-decoration: underline;
+}
+
+.Register-error {
+  color: #e53e3e;
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+  text-align: center;
+}
