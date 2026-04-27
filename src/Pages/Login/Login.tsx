@@ -32,6 +32,7 @@ const Login: React.FC = () => {
 
         const data: LoginResponse = await response.json();
         sessionStorage.setItem("JWT", data.token);
+        sessionStorage.setItem("Username", userName);
         console.log('Login successful.');
         navigate("/Dashboard");
     }).catch(() => {

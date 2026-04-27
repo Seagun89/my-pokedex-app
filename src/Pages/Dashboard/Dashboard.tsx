@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import './Dashboard.css';
 
 type PokemonResponse = {
@@ -7,18 +8,30 @@ type PokemonResponse = {
     abilityType: string;
 };
 
+// type QueryPokemonRequest = {
+//     AbilityType?: string;
+//     Height: number;
+//     Ability?: {Name: string; AbilityType: string; Damage: number}[];
+//     SortBy?: string;
+//     IsDescending: boolean;
+//     PageNumber: number;
+//     PageSize: number;
+//     Username: string;
+// };
+
 const Dashboard: React.FC = () => {
     const [pokemonList, setPokemonList] = useState<PokemonResponse[]>([]);
 
     useEffect(() => {
+        
+        const params = new URLSearchParams({Username: sessionStorage.getItem("Username") || ""});
         const fetchPokemon = async () => {
             try{
-                await fetch("http://localhost:5206/Pokemon/PokeDex/All", {
+                await fetch(`http://localhost:5206/Pokemon/PokeDex/All?${params}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                    },
-                    body: null
+                    }
                 }).then(async (response) => {
                     if(!response.ok){
                         throw new Error("Failed to fetch pokemon data list.");
@@ -41,7 +54,6 @@ const Dashboard: React.FC = () => {
         <h2>Pokedex</h2>
         <a href="#">Home</a>
         <a href="#">My Pokemon</a>
-        <a href="#">Add Pokemon</a>
       </div>
 
       {/* Main */}
@@ -49,7 +61,8 @@ const Dashboard: React.FC = () => {
         {/* Topbar */}
         <div className="topbar">
           <h3>Dashboard</h3>
-          <button>Logout</button>
+          <Link to='/'><button>Logout</button></Link>
+          
         </div>
 
         {/* Content */}

@@ -31,7 +31,7 @@ const Register: React.FC = () => {
     body: JSON.stringify({ email, userName, password, claims: [{type: "role", value: "User"}] } as RegisterRequestDto),
     }).then(async (response) => {
         if (!response.ok) throw new Error("Register failed."); 
-        navigate("/login");
+        navigate("/");
     }).catch(() => {
         setError(true);
         console.log(`Register Failed: ${errorMessage}`);
