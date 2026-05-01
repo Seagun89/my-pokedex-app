@@ -34,7 +34,7 @@ const Login: React.FC = () => {
         sessionStorage.setItem("JWT", data.token);
         sessionStorage.setItem("Username", userName);
         console.log('Login successful.');
-        navigate("/Dashboard");
+        navigate("/dashboard/home");
     }).catch(() => {
         setError(true);
         console.log(`Login Failed: ${errorMessage}`);

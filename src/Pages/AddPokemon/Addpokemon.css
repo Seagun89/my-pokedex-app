@@ -1,0 +1,89 @@
+/* Container */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+/* Form card */
+form {
+  width: 100%;
+  max-width: 500px;
+  background: #1e1e2f;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Headings */
+form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3e3892;
+}
+
+form h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #aaa;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #2a2a3d;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+/* Input focus */
+form input:focus {
+  outline: none;
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.2);
+}
+
+/* Placeholder */
+form input::placeholder {
+  color: #888;
+}
+
+/* Button */
+form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f8cff, #6a5cff);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Button hover */
+form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(79, 140, 255, 0.3);
+}
+
+/* Button active */
+form button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+  }
+}

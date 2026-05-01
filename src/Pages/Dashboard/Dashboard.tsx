@@ -1,85 +1,28 @@
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Dashboard.css';
-
-type PokemonResponse = {
-    id: number;
-    name: string;
-    abilityType: string;
-};
-
-// type QueryPokemonRequest = {
-//     AbilityType?: string;
-//     Height: number;
-//     Ability?: {Name: string; AbilityType: string; Damage: number}[];
-//     SortBy?: string;
-//     IsDescending: boolean;
-//     PageNumber: number;
-//     PageSize: number;
-//     Username: string;
-// };
-
-const Dashboard: React.FC = () => {
-    const [pokemonList, setPokemonList] = useState<PokemonResponse[]>([]);
-
-    useEffect(() => {
-        
-        const params = new URLSearchParams({Username: sessionStorage.getItem("Username") || ""});
-        const fetchPokemon = async () => {
-            try{
-                await fetch(`http://localhost:5206/Pokemon/PokeDex/All?${params}`, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                }).then(async (response) => {
-                    if(!response.ok){
-                        throw new Error("Failed to fetch pokemon data list.");
-                    }
-
-                    const data: PokemonResponse[] = await response.json();
-                    setPokemonList(data);
-                })
-            }catch (error){
-                console.error("Error fetching pokemon data:", error);
-            }
-        };
-
-        fetchPokemon();
-    }, []);
+ 
+const Dashboard: React.FC<{children: React.ReactNode}> = ({ children }) => {
     return (
-        <div className="dashboard">
+      <div
+      className="dashboard"
+      style={{
+        backgroundImage: `url(https://media.goboard.io/contentItem-8545720-74919945-8vet1w1woor6m-or.png)`,
+      }}
+    >
       {/* Sidebar */}
       <div className="sidebar">
         <h2>Pokedex</h2>
-        <a href="#">Home</a>
-        <a href="#">My Pokemon</a>
+        <Link to="/dashboard/home">My Pokemon</Link>
+        <Link to="/dashboard/add">Add Pokemon</Link>
       </div>
 
       {/* Main */}
       <div className="main">
-        {/* Topbar */}
         <div className="topbar">
           <h3>Dashboard</h3>
-          <Link to='/'><button>Logout</button></Link>
-          
+          <Link to="/"><button>Logout</button></Link>
         </div>
-
-        {/* Content */}
-        <div className="content">
-          <div className="card-grid">
-            {pokemonList.map((p) => (
-              <div className="card" key={p.id}>
-                <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
-                  alt={p.name}
-                />
-                <h4>{p.name}</h4>
-                <p>{p.abilityType}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {children}
       </div>
     </div>
     );

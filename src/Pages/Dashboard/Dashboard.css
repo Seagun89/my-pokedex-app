@@ -1,10 +1,40 @@
-/* Layout */
 .dashboard {
   display: flex;
-  height: 100vh;
-  background: #f4f6f9;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 110vh;
+
+  background-size: cover;
+  background-position: auto;
+  background-repeat: repeat;
 }
+
+/* Dark overlay so content is readable */
+.dashboard::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.dashboard > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Main area */
+.main {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+/* Content sits above background */
+.main > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* Sidebar */
 .sidebar {
@@ -34,17 +64,10 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Main content */
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 /* Topbar */
 .topbar {
   height: 60px;
-  background: white;
+  background: rgb(44, 39, 39);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,13 +101,14 @@
 /* Card grid */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
 /* Pokemon card */
 .card {
-  background: white;
+  background: rgb(236, 234, 234);
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
