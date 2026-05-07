@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Dashboard.css';
- 
+
 const Dashboard: React.FC<{children: React.ReactNode}> = ({ children }) => {
     return (
       <div
