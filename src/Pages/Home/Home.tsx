@@ -15,9 +15,7 @@ const Home: React.FC = () => {
     const [filteredPokemonList, setFilteredPokemonList] = useState<PokemonResponse[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const pageSizeVal = "5";
-
-    let totalPages = Math.ceil(pokemonList.length / Number.parseInt(pageSizeVal));
-
+    
     useEffect(() => {
         
         const params = new URLSearchParams({Username: sessionStorage.getItem("Username") || ""});
@@ -43,6 +41,7 @@ const Home: React.FC = () => {
 
         fetchPokemon();
     }, []);
+    let totalPages = Math.ceil(pokemonList.length / Number.parseInt(pageSizeVal));
     // might need to find way to remove duplicate and have a full pokemon list to use of filtering and pagination instead of making a new api call for each page change
     useEffect(() => {
         
